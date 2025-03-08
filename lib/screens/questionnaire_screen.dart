@@ -91,22 +91,22 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
         Choice(
           id: 'beach',
           text: 'Beach',
-          imageUrl: 'https://example.com/beach.jpg',
+          imageUrl: 'assets/images/beach.png',
         ),
         Choice(
           id: 'city',
           text: 'City',
-          imageUrl: 'https://example.com/city.jpg',
+          imageUrl: 'assets/images/city.png',
         ),
         Choice(
           id: 'mountains',
           text: 'Mountains',
-          imageUrl: 'https://example.com/mountains.jpg',
+          imageUrl: 'assets/images/mountains.png',
         ),
         Choice(
           id: 'desert',
           text: 'Desert',
-          imageUrl: 'https://example.com/desert.jpg',
+          imageUrl: 'assets/images/desert.png',
         ),
       ],
       questionNumber: 7,
@@ -137,13 +137,18 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
       });
     } else {
       // Last question answered, show results
+      // Create a default name if none was provided
+      final name = answers['name'] ?? 'User';
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => ResultsScreen(
             user: User(
               id: '1',
-              name: answers['name'] ?? '',
+              name: name,
+              profileImage:
+                  'assets/images/leo.png', // Add a default profile image
               personalityTraits: {
                 'Innovative': 0.8,
                 'Explorer': 0.6,
@@ -154,6 +159,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                 'Builder': 0.85,
                 'Engineer': 0.95,
               },
+              isNewUser: false,
             ),
           ),
         ),

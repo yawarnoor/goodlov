@@ -54,7 +54,7 @@ class ChatListScreen extends StatelessWidget {
                     Text(
                       'Matches appear in your conversations once you both of you have exchanged messages. You can connect with upto 4 people at a time.',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withAlpha(178),
                         fontSize: 14,
                       ),
                     ),
@@ -88,7 +88,7 @@ class ChatListScreen extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: Colors.white.withOpacity(0.1),
+            color: Colors.white.withAlpha(25),
             width: 1,
           ),
         ),
@@ -109,13 +109,13 @@ class ChatListScreen extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.white.withAlpha(127),
                 width: 1,
               ),
             ),
             child: Icon(
               Icons.add,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withAlpha(127),
               size: 20,
             ),
           ),

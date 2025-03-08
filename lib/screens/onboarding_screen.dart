@@ -39,14 +39,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     },
   ];
 
-  void skipToLastSlide() {
-    _carouselController.animateToPage(
-      _slides.length - 1,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +64,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 right: 16,
                 child: TextButton(
                   onPressed: () {
-                    _currentIndex = 3;
+                    // Jump directly to the last slide
+                    _carouselController.jumpToPage(_slides.length - 1);
+                    setState(() {
+                      _currentIndex = _slides.length - 1;
+                    });
                   },
                   child: const Text(
                     'Skip',

@@ -6,8 +6,8 @@ import 'package:goodlov/config/app_config.dart'; // Import the config
 void main() {
   // DEVELOPER NOTE:
   // Modify these values to quickly switch between different app states
-  AppConfig.hasCompletedProfile =
-      false; // Set to false to show "Create profile now" prompt
+  // AppConfig.hasCompletedProfile =
+  false; // Set to false to show "Create profile now" prompt
   AppConfig.isNewUser = true; // Uncomment to show onboarding screens
   AppConfig.showDebugInfo = true; // Show debug information
 

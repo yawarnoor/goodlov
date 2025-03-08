@@ -54,14 +54,14 @@ class LocationScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: 'Search City',
                     hintStyle: TextStyle(
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withAlpha(127),
                     ),
                     prefixIcon: Icon(
                       Icons.search,
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withAlpha(127),
                     ),
                     filled: true,
-                    fillColor: Colors.white.withOpacity(0.1),
+                    fillColor: Colors.white.withAlpha(25),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,

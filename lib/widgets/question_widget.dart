@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goodlov/models/questions.dart';
 import 'package:goodlov/widgets/date_slider_widget.dart';
 
-class QuestionWidget extends StatelessWidget {
+class QuestionWidget extends StatefulWidget {
   final Question question;
   final dynamic answer;
   final Function(dynamic) onAnswer;
@@ -15,6 +15,34 @@ class QuestionWidget extends StatelessWidget {
   });
 
   @override
+  State<QuestionWidget> createState() => _QuestionWidgetState();
+}
+
+class _QuestionWidgetState extends State<QuestionWidget> {
+  late TextEditingController _textController;
+
+  @override
+  void initState() {
+    super.initState();
+    _textController = TextEditingController(text: widget.answer);
+  }
+
+  @override
+  void didUpdateWidget(QuestionWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.answer != oldWidget.answer &&
+        widget.question.type == QuestionType.text) {
+      _textController.text = widget.answer ?? '';
+    }
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24.0),
@@ -22,7 +50,7 @@ class QuestionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            question.question,
+            widget.question.question,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 28,
@@ -37,11 +65,11 @@ class QuestionWidget extends StatelessWidget {
   }
 
   Widget _buildQuestionInput(BuildContext context) {
-    switch (question.type) {
+    switch (widget.question.type) {
       case QuestionType.text:
         return TextField(
-          controller: TextEditingController(text: answer),
-          onChanged: onAnswer,
+          controller: _textController,
+          onChanged: widget.onAnswer,
           style: const TextStyle(color: Colors.white, fontSize: 16),
           decoration: InputDecoration(
             hintText: 'Type here...',
@@ -58,32 +86,20 @@ class QuestionWidget extends StatelessWidget {
       case QuestionType.radio:
       case QuestionType.multipleChoice:
         return Column(
-          children: question.choices!
+          children: widget.question.choices!
               .map((choice) => Container(
                     margin: const EdgeInsets.only(bottom: 12),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: Theme(
-                      data: Theme.of(context).copyWith(
-                        radioTheme: RadioThemeData(
-                          fillColor:
-                              WidgetStateProperty.resolveWith<Color>((states) {
-                            if (states.contains(WidgetState.selected)) {
-                              return const Color(0xFF5CECC6);
-                            }
-                            return Colors.grey;
-                          }),
-                        ),
-                      ),
-                      child: RadioListTile<String>(
-                        value: choice.id,
-                        groupValue: answer,
-                        onChanged: (value) => onAnswer(value),
-                        title: Text(choice.text),
-                        controlAffinity: ListTileControlAffinity.leading,
-                      ),
+                    child: RadioListTile<String>(
+                      value: choice.id,
+                      groupValue: widget.answer,
+                      onChanged: (value) => widget.onAnswer(value),
+                      title: Text(choice.text),
+                      activeColor: const Color(0xFF5CECC6),
+                      controlAffinity: ListTileControlAffinity.leading,
                     ),
                   ))
               .toList(),
@@ -91,8 +107,8 @@ class QuestionWidget extends StatelessWidget {
 
       case QuestionType.dateSlider:
         return DateSliderWidget(
-          onDateSelected: onAnswer,
-          selectedDate: answer,
+          onDateSelected: widget.onAnswer,
+          selectedDate: widget.answer,
         );
 
       case QuestionType.imageChoice:
@@ -101,9 +117,9 @@ class QuestionWidget extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
-          children: question.choices!
+          children: widget.question.choices!
               .map((choice) => GestureDetector(
-                    onTap: () => onAnswer(choice.id),
+                    onTap: () => widget.onAnswer(choice.id),
                     child: Column(
                       children: [
                         Expanded(
@@ -111,37 +127,25 @@ class QuestionWidget extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                color: answer == choice.id
+                                color: widget.answer == choice.id
                                     ? const Color(0xFF5CECC6)
                                     : Colors.transparent,
                                 width: 2,
                               ),
                               image: DecorationImage(
-                                image: NetworkImage(choice.imageUrl!),
+                                image: AssetImage(choice.imageUrl!),
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                         ),
-                        Theme(
-                          data: Theme.of(context).copyWith(
-                            radioTheme: RadioThemeData(
-                              fillColor: WidgetStateProperty.resolveWith<Color>(
-                                  (states) {
-                                if (states.contains(WidgetState.selected)) {
-                                  return const Color(0xFF5CECC6);
-                                }
-                                return Colors.grey;
-                              }),
-                            ),
-                          ),
-                          child: RadioListTile<String>(
-                            value: choice.id,
-                            groupValue: answer,
-                            onChanged: (value) => onAnswer(value),
-                            title: Text(choice.text,
-                                style: const TextStyle(color: Colors.white)),
-                          ),
+                        RadioListTile<String>(
+                          value: choice.id,
+                          groupValue: widget.answer,
+                          onChanged: (value) => widget.onAnswer(value),
+                          title: Text(choice.text,
+                              style: const TextStyle(color: Colors.white)),
+                          activeColor: const Color(0xFF5CECC6),
                         ),
                       ],
                     ),

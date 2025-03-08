@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goodlov/models/user.dart';
-import 'package:goodlov/screens/result_screen.dart';
 import 'package:goodlov/screens/onboarding_screen.dart';
 import 'package:goodlov/config/app_config.dart'; // Import the config
+import 'package:goodlov/navigation/main_navigation.dart';
 
 class LoginFormScreen extends StatefulWidget {
   const LoginFormScreen({super.key});
@@ -129,7 +129,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                         MaterialPageRoute(
                             builder: (context) => AppConfig.isNewUser
                                 ? const OnboardingScreen()
-                                : ResultsScreen(user: user)),
+                                : const MainNavigation(initialTab: 0)),
                       );
                     },
                     style: ElevatedButton.styleFrom(

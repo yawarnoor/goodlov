@@ -52,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: Colors.white.withOpacity(0.1),
+                      color: Colors.white.withAlpha(25),
                       width: 1,
                     ),
                   ),
@@ -209,7 +209,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.white.withAlpha(25),
               width: 1,
             ),
           ),
@@ -223,7 +223,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Text(
                     label,
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.6),
+                      color: Colors.white.withAlpha(153),
                       fontSize: 14,
                     ),
                   ),
@@ -240,7 +240,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             Icon(
               Icons.chevron_right,
-              color: Colors.white.withOpacity(0.6),
+              color: Colors.white.withAlpha(153),
               size: 24,
             ),
           ],

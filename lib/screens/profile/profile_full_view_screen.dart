@@ -206,7 +206,7 @@ class ProfileFullViewScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.5),
+        color: Colors.black.withAlpha(127),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(

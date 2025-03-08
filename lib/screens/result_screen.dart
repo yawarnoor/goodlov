@@ -115,7 +115,8 @@ class ResultsScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   image: DecorationImage(
-                    image: AssetImage(user.profileImage!),
+                    image: AssetImage(
+                        user.profileImage ?? 'assets/images/leo.png'),
                     fit: BoxFit.cover,
                   ),
                 ),

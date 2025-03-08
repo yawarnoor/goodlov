@@ -72,7 +72,7 @@ class _VoiceIntroScreenState extends State<VoiceIntroScreen> {
                 'Introduce yourself! Talk about what your\nlife story or just tell a funny story to make\nyour matches laugh....',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.7),
+                  color: Colors.white.withAlpha(178),
                   fontSize: 16,
                 ),
               ),

@@ -70,7 +70,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: Colors.grey.withOpacity(0.3),
+                              color: Colors.grey.withAlpha(76),
                               width: 2,
                             ),
                           ),
@@ -269,7 +269,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: Colors.grey.withOpacity(0.3),
+            color: Colors.grey.withAlpha(76),
             width: 1,
             style: BorderStyle.solid,
           ),
@@ -279,7 +279,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
           children: [
             Icon(
               icon,
-              color: Colors.grey.withOpacity(0.3),
+              color: Colors.grey.withAlpha(76),
               size: 24,
             ),
             if (icon == Icons.add)
@@ -289,7 +289,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
                   'Add more photos',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.grey.withOpacity(0.3),
+                    color: Colors.grey.withAlpha(76),
                     fontSize: 10,
                   ),
                 ),
@@ -312,7 +312,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: Colors.grey.withOpacity(0.1),
+              color: Colors.grey.withAlpha(25),
               width: 1,
             ),
           ),
@@ -333,7 +333,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
                   Text(
                     subtitle,
                     style: TextStyle(
-                      color: Colors.grey.withOpacity(0.7),
+                      color: Colors.grey.withAlpha(178),
                       fontSize: 14,
                     ),
                   ),
@@ -341,7 +341,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
             ),
             Icon(
               Icons.chevron_right,
-              color: Colors.grey.withOpacity(0.7),
+              color: Colors.grey.withAlpha(178),
             ),
           ],
         ),
@@ -360,7 +360,7 @@ class _ProfilePreviewScreenState extends State<ProfilePreviewScreen> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.grey.withOpacity(0.3),
+            color: Colors.grey.withAlpha(76),
             width: 1,
             style: BorderStyle.solid,
           ),
